@@ -43,7 +43,20 @@ class Main {
 						case DecafLexer.WS_:
 							type = " WHITESPACE";
 							break;
+<<<<<<< HEAD
  
+=======
+<<<<<<< HEAD
+						case DecafLexer.SL_COMMENT:
+							type = " COMMENT";
+							break;	
+						
+
+=======
+						
+ 
+>>>>>>> 2af3f212c7e50fd6755a45a1d7846cf0c2172bef
+>>>>>>> fdac7e98be86b1caf190b812ad897784d5523bb2
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
 		        		}
