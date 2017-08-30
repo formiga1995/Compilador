@@ -46,9 +46,7 @@ class Main {
 						case DecafLexer.SL_COMMENT:
 							type = " COMMENT";
 							break;	
-						case DecafLexer.ESC:
-							type = " fragment";
-							break;
+						
 
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
