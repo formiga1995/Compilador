@@ -47,10 +47,7 @@ class Main {
 							type = " HEXADECIMAL";
 							break;
 						case DecafLexer.NUMBER:
-							type = " INTLITERAL";
-							break;
-						case DecafLexer.OP:
-							type = " OPERATOR";
+							type = " NUMBER";
 							break;
  
 		        			}
