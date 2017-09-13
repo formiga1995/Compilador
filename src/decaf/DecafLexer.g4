@@ -20,13 +20,15 @@ RCURLY : '}';
 ID  :
   ('a'..'z' | 'A'..'Z')+;
 
-WS_ : (' ' | '\n' ) ;
-//WS_ : (' ' | '\n' ) -> skip;
+//WS_ : (' ' | '\n' ) ;
+WS_ : (' ' | '\n' ) -> skip;
 
 SL_COMMENT : '//' (~'\n')* '\n' -> skip;
 
-CHAR : '\'' (ESC|~'\''|'\\t'|'\\\\'|'\'') '\'';
-STRING : '"' (ESC|~'"')* '"';
+CHAR : '\'' (ESC|~'\''|'\\t'|'\\\\') '\'';
+//STRING : '"' (ESC|CHAR|~'"')* '"'; 
+STRING : '"' (ID|CHAR) '"';
+//STRING : '"' (ESC|~'"')* '"';
 
 fragment
 ESC :  '\\' ('n'|'"');

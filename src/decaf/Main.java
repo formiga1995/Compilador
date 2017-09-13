@@ -38,13 +38,12 @@ class Main {
 							type = " CHARLITERAL";
 							break;
 						case DecafLexer.STRING:
-							type = " STRING";
+							type = " STRINGLITERAL";
 							break;
 						case DecafLexer.WS_:
 							type = " WHITESPACE";
 							break;
-						
- 
+						 
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
 		        		}
