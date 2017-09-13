@@ -49,6 +49,9 @@ class Main {
 						case DecafLexer.NUMBER:
 							type = " NUMBER";
 							break;
+						case DecafLexer.BOOLEANOS:
+							type = " BOOLEANLITERAL";
+							break;
  
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
