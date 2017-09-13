@@ -49,7 +49,13 @@ class Main {
 	                                        case DecafLexer.HEX:
 							type = " HEXADECIMAL";
 							break;
-						
+  						case DecafLexer.BOOLEANOS:
+							type = " BOOLEANLITERAL";
+							break;
+						case DecafLexer.NUMBER:
+							type = " NUMBER";
+							break;
+
 
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
