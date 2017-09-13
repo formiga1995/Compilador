@@ -43,7 +43,17 @@ class Main {
 						case DecafLexer.WS_:
 							type = " WHITESPACE";
 							break;
+<<<<<<< HEAD
 						 
+=======
+						case DecafLexer.HEX:
+							type = " HEXADECIMAL";
+							break;
+						case DecafLexer.NUMBER:
+							type = " NUMBER";
+							break;
+ 
+>>>>>>> f922356d1d67177ead092271388277191c39b750
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
 		        		}
