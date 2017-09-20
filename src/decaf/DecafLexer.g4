@@ -24,13 +24,12 @@ WS_ : (' ' | '\n' | '\t' ) -> skip;
 
 SL_COMMENT : '//' (~'\n')* '\n' -> skip;
 
-NUMBER : ('-'|'+')?('0'..'9')+((','|'.')('0'..'9')+)? ;
-CHAR : '\''(ESC|'a'..'z'|'A'..'Z'|'\\t'|'\\\\'|'0'..'9' ~('"'))'\'' ;
+NUMBERLITERAL : ('-'|'+')?(NUMBER)+((','|'.')(NUMBER)+)?;
+CHAR : '\''(ESC|LETTER|'\\t'|'\\\\'|NUMBER ~('"'))'\'' ;
 //STRING : '"' (~'"'|~'\''|' '|~'\''|CHAR|ESC)* '"';
 //STRING : '"' (ID|CHAR)* '"';
 STRING: '"' (ESC|ID|NUMBER|OP|' '|','|'.'|';'|':'|'?'|'!'|'\\'|','|',' ~('"'))* '"' ;
-HEX : '0x' ('0'..'9'|'a'..'f'|'A'..'F')+ ;
-
+HEX : '0x' (NUMBER|'a'..'f'|'A'..'F')+ ;
 PEV : ';';
 VIRGU : ',';
 IF : 'if';
@@ -49,8 +48,11 @@ LBRACK : '[';
 RBRACK : ']';
 LPAREN : '(';
 RPAREN : ')';
-ID  : ('a'..'z' | 'A'..'Z' | '_')('a'..'z' | 'A'..'Z' |'_'|'0'..'9')*;
+ID  : (~'0'..'9')('_' | LETTER) ('_' | LETTER |'0'..'9'(~'.'))*;
 
 fragment
 ESC :  '\\'('n'|'t'|'f'|'r'|'b'|'x'|'\\'|'\"'|'\'');
 
+
+fragment NUMBER: ['0'..'9'];
+fragment LETTER: ('a'..'z'|'A'..'Z');

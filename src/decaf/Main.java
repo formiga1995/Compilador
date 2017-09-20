@@ -46,12 +46,15 @@ class Main {
 						case DecafLexer.HEX:
 							type = " HEXADECIMAL";
 							break;
-						case DecafLexer.NUMBER:
+						case DecafLexer.NUMBERLITERAL:
 							type = " NUMBER";
 							break;
 						case DecafLexer.BOOLEANOS:
 							type = " BOOLEANLITERAL";
 							break;
+						/*case DecafParser.type:
+							type = " BOOLEANLITERAL";
+							break;*/
  
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
