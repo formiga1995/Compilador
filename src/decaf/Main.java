@@ -52,6 +52,9 @@ class Main {
 						case DecafLexer.BOOLEANOS:
 							type = " BOOLEANLITERAL";
 							break;
+						case DecafLexer.HEX_N:
+							throw new Exception ("unexpected char: 0x");
+													
 												
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
