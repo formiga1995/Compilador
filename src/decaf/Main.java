@@ -46,7 +46,7 @@ class Main {
 						case DecafLexer.HEX:
 							type = " HEXADECIMAL";
 							break;
-						case DecafLexer.NUMBERLITERAL:
+						case DecafLexer.NUMBER:
 							type = " NUMBER";
 							break;
 						case DecafLexer.BOOLEANOS:
