@@ -43,19 +43,15 @@ class Main {
 						case DecafLexer.WS_:
 							type = " WHITESPACE";
 							break;
-						case DecafLexer.SL_COMMENT:
-							type = " COMMENT";
-							break;
-	                                        case DecafLexer.HEX:
+						case DecafLexer.HEX:
 							type = " HEXADECIMAL";
-							break;
-  						case DecafLexer.BOOLEANOS:
-							type = " BOOLEANLITERAL";
 							break;
 						case DecafLexer.NUMBER:
 							type = " NUMBER";
 							break;
-
+						case DecafLexer.BOOLEANOS:
+							type = " BOOLEANLITERAL";
+							break;
 
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
@@ -83,3 +79,5 @@ class Main {
         }
     }
 }
+
+
