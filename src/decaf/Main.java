@@ -52,14 +52,9 @@ class Main {
 						case DecafLexer.BOOLEANOS:
 							type = " BOOLEANLITERAL";
 							break;
-<<<<<<< HEAD
 						/*case DecafParser.type:
 							type = " BOOLEANLITERAL";
 							break;*/
- 
-=======
-																		
->>>>>>> 072c233e25cb3e3354a84732c76c11e8fcc7dcc8
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
 		        		}
