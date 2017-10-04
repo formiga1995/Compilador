@@ -74,6 +74,7 @@ class Main {
 				CommonTokenStream tokens = new CommonTokenStream(lexer);
         		DecafParser parser = new DecafParser(tokens);
                 parser.program();
+
         	}
         	
         } catch(Exception e) {
