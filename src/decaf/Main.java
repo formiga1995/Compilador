@@ -40,32 +40,27 @@ class Main {
 
 		        			switch (token.getType())
 		        			{
-								
-		        			case DecafLexer.ID:
-		        				type = " IDENTIFIER";
-		        				break;
-                                                case DecafLexer.CHAR:
-							type = " CHARLITERAL";
-							break;
-						case DecafLexer.STRING:
-							type = " STRINGLITERAL";
-							break;
-						case DecafLexer.WS_:
-							type = " WHITESPACE";
-							break;
-						case DecafLexer.HEX:
-							type = " HEXADECIMAL";
-							break;
-						case DecafLexer.NUMBER:
-							type = " NUMBER";
-							break;
-						case DecafLexer.BOOLEANOS:
-							type = " BOOLEANLITERAL";
-							break;
-						/*case DecafParser.type:
-							type = " BOOLEANLITERAL";
-							break;*/
-		        			
+							case DecafLexer.ID:
+								type = " IDENTIFIER";
+								break;
+		                                        case DecafLexer.CHAR:
+								type = " CHARLITERAL";
+								break;
+							case DecafLexer.STRING:
+								type = " STRINGLITERAL";
+								break;
+							case DecafLexer.WS_:
+								type = " WHITESPACE";
+								break;
+							case DecafLexer.HEX:
+								type = " HEXADECIMAL";
+								break;
+							case DecafLexer.NUMBER:
+								type = " NUMBER";
+								break;
+							case DecafLexer.BOOLEANOS:
+								type = " BOOLEANLITERAL";
+								break;
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
 		        		}
@@ -105,7 +100,7 @@ class Main {
                     panel.add(viewr);
                     frame.add(panel);
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    frame.setSize(800,600);
+                    frame.setSize(1000,500);
                     frame.setVisible(true);
                 }
 
@@ -117,7 +112,5 @@ class Main {
         }
     }
 }
-
-
 
 
