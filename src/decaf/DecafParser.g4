@@ -16,14 +16,21 @@ type: ( BOOLEAN | INT );
 program: CLASS ID block EOF;
 
 action: ( actionpv | method );
-actionpv: ( declare ) PEV;
+actionpv: ( declare | atribuicao) PEV;
 
 declare: type ID array?;
 method: ( type | VOID ) ID method_args block;
+method_call: ID LPAREN RPAREN;
 
+args: LPAREN (expression (VIRGULA expression)*)/ RPAREN;
 method_args: LPAREN (( type | VOID )ID)? ( VIRGULA ( type | VOID )ID )* RPAREN ;
 block: LCURLY action* RCURLY;
 array: LBRACK NUMBER RBRACK;
 
-if_stmnt: IF block;
+numero: ID array;
 
+atribuicao: ID EQUAL expression;
+expression: ((value OP value ( OP value)* (OP)? LPAREN expression RPAREN)| LPAREN expression RPAREN);
+value: (NUMBER | ID | numero | method_call);
+
+if_stmnt: IF block;
