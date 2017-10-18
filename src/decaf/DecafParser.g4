@@ -33,10 +33,10 @@ numero: ID array;
 
 atribuicao: (ID | numero) EQUAL expression;
 expression: 	value
-		| expression OP expression
+		| expression (OP|MENOS) expression
 		| expression COND expression
 		| LPAREN expression RPAREN 
-		| MOM expression
+		| MENOS expression
 		| EXCLA expression;
 value: (NUMBER | ID | numero | method_call | HEX | CHAR | STRING);
 return_stmt: RETURN expression;
