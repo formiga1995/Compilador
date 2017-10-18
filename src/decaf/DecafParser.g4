@@ -44,5 +44,5 @@ condition: expression COND expression;
 
 if_stmt: IF LPAREN condition RPAREN blockpv else_stmt?;
 else_stmt: ELSE blockpv;     
-for_stmt: FOR declare VIRGULA expression blockpv ;
+for_stmt: FOR declare VIRGULA expression blockpv ; 
 callout_stmt: CALLOUT LPAREN STRING VIRGULA STRING ( VIRGULA expression )* RPAREN;  
