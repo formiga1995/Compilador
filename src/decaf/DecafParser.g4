@@ -19,7 +19,7 @@ action: ( actionpv | actionnopv );
 actionpv: ( declare | atribuicao | return_stmt | method_call | callout_stmt | BREAK) PEV;
 actionnopv: (if_stmt | for_stmt  );
 
-declare: type ID (array)? (EQUAL expression)?;
+declare: type ID (( LBRACK HEX RBRACK) | (LBRACK NUMBER RBRACK))? (EQUAL expression)?;
 method: ( type | VOID ) ID method_args block;
 method_call: ID args;
 
