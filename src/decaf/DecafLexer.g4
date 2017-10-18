@@ -41,6 +41,8 @@ EQUAL: '=';
 
 PEV: ';';
 VIRGULA: ',';
+EXCLA: '!';
+MOM: ('-'|'+');
 IF: 'if';
 ELSE: 'else';
 CALLOUT: 'callout';

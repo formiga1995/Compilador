@@ -16,10 +16,10 @@ type: ( BOOLEAN | INT );
 program: CLASS ID block EOF;
 
 action: ( actionpv | actionnopv | method );
-actionpv: ( declare | atribuicao | return_stmt) PEV;
-actionnopv: (if_stmt);
+actionpv: ( declare | atribuicao | return_stmt | method_call | callout_stmt ) PEV;
+actionnopv: (if_stmt | for_stmt );
 
-declare: type ID (array)?;
+declare: type ID (array)? ( EQUAL expression )?;
 method: ( type | VOID ) ID method_args block;
 method_call: ID args;
 
@@ -32,10 +32,16 @@ array: LBRACK expression RBRACK;
 numero: ID array;
 
 atribuicao: ID EQUAL expression;
-expression: (value( OP value )* (OP LPAREN expression RPAREN)? | LPAREN expression RPAREN);
+expression: 	value
+		| expression OP expression
+		| LPAREN expression RPAREN 
+		| MOM expression
+		| EXCLA expression;
 value: (NUMBER | ID | numero | method_call);
 return_stmt: RETURN expression;
 condition: expression COND expression;
 
 if_stmt: IF LPAREN condition RPAREN blockpv else_stmt?;
 else_stmt: ELSE blockpv;     
+for_stmt: FOR declare VIRGULA ID blockpv ;
+callout_stmt: CALLOUT LPAREN STRING VIRGULA STRING ( VIRGULA expression )* RPAREN;
