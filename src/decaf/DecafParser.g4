@@ -19,7 +19,7 @@ action: ( actionpv | actionnopv );
 actionpv: ( declare | atribuicao | return_stmt | method_call | callout_stmt | BREAK ) PEV;
 actionnopv: (if_stmt | for_stmt );
 
-declare: type ID (array)? ( EQUAL expression )?;
+declare: type ID (LBRACK (NUMBER|HEX) RBRACK)? ( EQUAL expression )?;
 method: ( type | VOID ) ID method_args block;
 method_call: ID args;
 
@@ -34,10 +34,11 @@ numero: ID array;
 atribuicao: (ID | numero) EQUAL expression;
 expression: 	value
 		| expression OP expression
+		| expression COND expression
 		| LPAREN expression RPAREN 
 		| MOM expression
 		| EXCLA expression;
-value: (NUMBER | ID | numero | method_call);
+value: (NUMBER | ID | numero | method_call|HEX|CHAR|STRING);
 return_stmt: RETURN expression;
 condition: expression COND expression;
 
