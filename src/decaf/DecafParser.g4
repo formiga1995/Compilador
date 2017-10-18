@@ -23,6 +23,7 @@ declare: type ID (LBRACK (NUMBER|HEX) RBRACK)? ( EQUAL expression )?;
 method: ( type | VOID ) ID method_args block;
 method_call: ID args;
 
+
 args: LPAREN ( expression ( VIRGULA expression )* )? RPAREN;
 method_args: LPAREN (( type | VOID )ID)? ( VIRGULA ( type | VOID )ID )* RPAREN ;
 block: LCURLY (action | method)* RCURLY;
@@ -33,10 +34,10 @@ numero: ID array;
 
 atribuicao: (ID | numero) EQUAL expression;
 expression: 	value
-		| expression OP expression
+		| expression (OP|MENOS) expression
 		| expression COND expression
 		| LPAREN expression RPAREN 
-		| MOM expression
+		| MENOS expression
 		| EXCLA expression;
 value: (NUMBER | ID | numero | method_call|HEX|CHAR|STRING);
 return_stmt: RETURN expression;
