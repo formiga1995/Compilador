@@ -19,7 +19,8 @@ action: ( actionpv | actionnopv );
 actionpv: ( declare | atribuicao | return_stmt | method_call | callout_stmt | BREAK ) PEV;
 actionnopv: (if_stmt | for_stmt );
 
-declare: type ID (LBRACK (NUMBER | HEX ) RBRACK)? ( EQUAL expression )?;
+//declare: type ID (LBRACK (NUMBER | HEX ) RBRACK)? ( EQUAL expression )?;
+declare: type ID (LBRACK ( value ) RBRACK)? ;
 method: ( type | VOID ) ID method_args block;
 method_call: ID args;
 
@@ -36,13 +37,13 @@ expression: 	value
 		| expression (OP|MENOS) expression
 		| expression COND expression
 		| LPAREN expression RPAREN 
-		| MENOS expression
+		//| MENOS expression
 		| EXCLA expression;
-value: (NUMBER | ID | numero | method_call | HEX | CHAR | STRING);
+value: (MENOS)? (NUMBER | ID | numero | method_call | HEX | CHAR | STRING);
 return_stmt: RETURN expression;
 condition: expression COND expression;
 
 if_stmt: IF LPAREN condition RPAREN blockpv else_stmt?;
 else_stmt: ELSE blockpv;     
-for_stmt: FOR declare VIRGULA expression blockpv ;
+for_stmt: FOR atribuicao VIRGULA expression blockpv ;
 callout_stmt: CALLOUT LPAREN STRING VIRGULA STRING ( VIRGULA expression )* RPAREN;

@@ -40,7 +40,7 @@ class Main {
 
 		        			switch (token.getType())
 		        			{
-								case DecafLexer.ID:
+						case DecafLexer.ID:
 		        				type = " IDENTIFIER";
 		        				break;
                                                 case DecafLexer.CHAR:
