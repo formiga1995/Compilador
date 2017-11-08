@@ -38,7 +38,7 @@ public class DecafSymbolsAndScopes extends DecafParserBaseListener {
 
         // push new scope by making new one that points to enclosing scope
         FunctionSymbol function = new FunctionSymbol(name);
-        // function.setType(type); // Set symbol type
+        // function.setType(type); // Set symbol type  
 
         currentScope.define(function); // Define function in current scope
         saveScope(ctx, function);
