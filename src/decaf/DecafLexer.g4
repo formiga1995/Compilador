@@ -19,7 +19,7 @@ RCURLY : '}';
 
 
 //WS_ : (' ' | '\n' );
-WS_ : (' ' | '\n' ) -> skip;
+WS_ : (' ' | '\n' | '\t' ) -> skip;
 
 SL_COMMENT : '//' (~'\n')* '\n' -> skip;
 //SL_COMMENT : '//' (~'\n')* '\n';

@@ -30,8 +30,8 @@ public class DecafSymbolsAndScopes extends DecafParserBaseListener {
         System.out.println(globals);
     }
 
-    @Override
-    public void enterDeclare(DecafParser.DeclareContext ctx) {
+    //@Override
+    public void enterDeclare(DecafParser.ParametherContext ctx) {
         String name = ctx.ID().getText();
         int typeTokenType = ctx.type().start.getType();
         DecafSymbol.Type type = this.getType(typeTokenType);
@@ -45,8 +45,8 @@ public class DecafSymbolsAndScopes extends DecafParserBaseListener {
         pushScope(function);
     }
 
-    @Override
-    public void exitDeclare(DecafParser.DeclareContext ctx) {
+    //@Override
+    public void exitDeclare(DecafParser.ParametherContext ctx) {
         popScope();
     }
 
@@ -63,13 +63,13 @@ public class DecafSymbolsAndScopes extends DecafParserBaseListener {
     }
 
 //enterDecl
-    @Override
-    public void enterMethod(DecafParser.MethodContext ctx) {
+    //@Override
+    public void enterMethod(DecafParser.ParamContext ctx) {
         defineVar(ctx.type(), ctx.ID().getSymbol());
     }
 
-    @Override
-    public void exitMethod(DecafParser.MethodContext ctx) {
+    //@Override
+    public void exitMethod(DecafParser.ParamContext ctx) {
         String name = ctx.ID().getSymbol().getText();
         Symbol var = currentScope.resolve(name);
         if ( var==null ) {
