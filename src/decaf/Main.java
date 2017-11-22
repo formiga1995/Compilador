@@ -135,7 +135,7 @@ class Main {
 					JPanel panel = new JPanel();
 					TreeViewer viewr = new TreeViewer(Arrays.asList(
 							parser.getRuleNames()),tree);
-					viewr.setScale(1.5);//scale a little
+					viewr.setScale(0.5);//scale a little
 					panel.add(viewr);
 					frame.add(panel);
 					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

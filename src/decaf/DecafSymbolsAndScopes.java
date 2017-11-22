@@ -32,7 +32,7 @@ public class DecafSymbolsAndScopes extends DecafParserBaseListener {
 
     @Override
     public void enterDeclare(DecafParser.DeclareContext ctx) {
-        String name = ctx.IDENTIFIER().getText();
+        String name = ctx.ID().getText();
         int typeTokenType = ctx.type().start.getType();
         DecafSymbol.Type type = this.getType(typeTokenType);
 
@@ -54,7 +54,7 @@ public class DecafSymbolsAndScopes extends DecafParserBaseListener {
     public void enterBlock(DecafParser.BlockContext ctx) {
         LocalScope l = new LocalScope(currentScope);
         saveScope(ctx, currentScope);
-        // pushScope(l);
+         pushScope(l);
     }
 
     @Override
@@ -62,20 +62,21 @@ public class DecafSymbolsAndScopes extends DecafParserBaseListener {
         popScope();
     }
 
+//enterDecl
     @Override
-    public void enterDecl(DecafParser.DeclContext ctx) {
-        defineVar(ctx.type(), ctx.IDENTIFIER().getSymbol());
+    public void enterMethod(DecafParser.MethodContext ctx) {
+        defineVar(ctx.type(), ctx.ID().getSymbol());
     }
 
     @Override
-    public void exitDecl(DecafParser.DeclContext ctx) {
-        String name = ctx.IDENTIFIER().getSymbol().getText();
+    public void exitMethod(DecafParser.MethodContext ctx) {
+        String name = ctx.ID().getSymbol().getText();
         Symbol var = currentScope.resolve(name);
         if ( var==null ) {
-            this.error(ctx.IDENTIFIER().getSymbol(), "no such variable: "+name);
+            this.error(ctx.ID().getSymbol(), "no such variable: "+name);
         }
         if ( var instanceof FunctionSymbol ) {
-            this.error(ctx.IDENTIFIER().getSymbol(), name+" is not a variable");
+            this.error(ctx.ID().getSymbol(), name+" is not a variable");
         }
     }
 
@@ -131,7 +132,7 @@ public class DecafSymbolsAndScopes extends DecafParserBaseListener {
     public static DecafSymbol.Type getType(int tokenType) {
         switch ( tokenType ) {
             case DecafParser.VOID :  return DecafSymbol.Type.tVOID;
-            case DecafParser.INTEGER_LITERAL :   return DecafSymbol.Type.tINT;
+            case DecafParser.NUMBER :   return DecafSymbol.Type.tINT;
         }
         return DecafSymbol.Type.tINVALID;
     }

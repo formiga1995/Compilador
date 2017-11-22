@@ -20,7 +20,7 @@ actionpv: ( declare | atribuicao | return_stmt | method_call | callout_stmt | BR
 actionnopv: (if_stmt | for_stmt );
 
 //declare: type ID (LBRACK (NUMBER | HEX ) RBRACK)? ( EQUAL expression )?;
-declare: type ID (LBRACK ( value ) RBRACK)? ;
+declare: type ID (array)? ( VIRGULA ID (array)? )* ;
 method: ( type | VOID ) ID method_args block;
 method_call: ID args;
 
@@ -29,6 +29,8 @@ method_args: LPAREN (( type | VOID )ID)? ( VIRGULA ( type | VOID )ID )* RPAREN ;
 block: LCURLY (action | method)* RCURLY;
 blockpv: LCURLY action* RCURLY;
 array: LBRACK expression RBRACK;
+
+valor_numero: NUMBER | HEX;
 
 numero: ID array;
 
@@ -39,7 +41,7 @@ expression: 	value
 		| LPAREN expression RPAREN 
 		//| MENOS expression
 		| EXCLA expression;
-value: (MENOS)? (NUMBER | ID | numero | method_call | HEX | CHAR | STRING);
+value: (MENOS)? (ID | numero | method_call | valor_numero | CHAR | STRING);
 return_stmt: RETURN expression;
 condition: expression COND expression;
 
